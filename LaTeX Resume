@@ -1,1 +1,325 @@
+\documentclass[9pt, letterpaper]{extarticle}
 
+% Packages:
+\usepackage[
+    ignoreheadfoot,
+    top=1.5 cm,
+    bottom=1.5 cm,
+    left=1.5 cm,
+    right=1.5 cm,
+    footskip=0.8 cm
+]{geometry}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{primaryColor}{RGB}{0, 0, 0}
+\usepackage{enumitem}
+\usepackage{fontawesome5}
+\usepackage{amsmath}
+\usepackage[
+    pdftitle={Shubham Mishra's CV},
+    pdfauthor={Shubham Mishra},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref}
+\usepackage[pscoord]{eso-pic}
+\usepackage{calc}
+\usepackage{bookmark}
+\usepackage{lastpage}
+\usepackage{changepage}
+\usepackage{paracol}
+\usepackage{ifthen}
+\usepackage{needspace}
+\usepackage{iftex}
+
+% Ensure that generate pdf is machine readable/ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+\usepackage{charter}
+
+% Some settings:
+\raggedright
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt}
+\pagestyle{empty}
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\topskip}{0pt}
+\setlength{\columnsep}{0.15cm}
+\pagenumbering{gobble}
+
+\titleformat{\section}{\needspace{3\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+
+\titlespacing{\section}{
+    -1pt
+}{
+    0.1 cm
+}{
+    0.1 cm
+}
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$}
+
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.05 cm,
+        parsep=0.05 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0 cm + 10pt
+    ]
+}{
+    \end{itemize}
+}
+
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[
+        topsep=0.05 cm,
+        parsep=0.05 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+}
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0 cm + 0.00001 cm
+    }{
+        0 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+}
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+}
+
+\newenvironment{threecolentry}[3][]{
+    \onecolentry
+    \def\thirdColumn{#3}
+    \setcolumnwidth{, \fill, 4.5 cm}
+    \begin{paracol}{3}
+    {\raggedright #2} \switchcolumn
+}{
+    \switchcolumn \raggedleft \thirdColumn
+    \end{paracol}
+    \endonecolentry
+}
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.2}
+}{
+    \par\kern\topsep
+}
+
+\newcommand{\placelastupdatedtext}{%
+  \AddToShipoutPictureFG*{%
+    \put(
+        \LenToUnit{\paperwidth-2 cm-0 cm+0.05cm},
+        \LenToUnit{\paperheight-1.0 cm}
+    ){\vtop{{\null}\makebox[0pt][c]{
+        \small\color{gray}\textit{Last updated in September 2024}\hspace{\widthof{Last updated in September 2024}}
+    }}}%
+  }%
+}
+
+\let\hrefWithoutArrow\href
+
+\begin{document}
+    \newcommand{\AND}{\unskip
+        \cleaders\copy\ANDbox\hskip\wd\ANDbox
+        \ignorespaces
+    }
+    \newsavebox\ANDbox
+    \sbox\ANDbox{$|$}
+
+    \begin{header}
+        \fontsize{20 pt}{20 pt}\selectfont Shubham Mishra
+
+        \vspace{3 pt}
+
+        \normalsize
+        \mbox{Washington, DC, USA}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{mailto:sm242002@bu.edu}{sm242002@bu.edu}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{tel:+18142064686}{8142064686}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{https://linkedin.com/in/shubham-24-mishra}{https://www.linkedin.com/in/shubham-24-mishra/}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{https://github.com/sm242002}{github.com/sm242002}}%
+    \end{header}
+
+    \vspace{3 pt - 0.1 cm}
+
+\section*{Publications}
+\begin{itemize}[leftmargin=*, noitemsep]
+    \item \textbf{Mention in Newsletter for Extraordinary Success} \\
+    Pennsylvania State University \\
+    \url{https://www.psu.edu/news/academics/story/intern-interprets-big-data-and-builds-entrepreneurial-skills}
+
+    \item \textbf{GLOB-S Research Lab GIS Map} \\
+    Boston University \\
+    \url{https://globslab.org/on-going-research-projects/}
+\end{itemize}
+
+\vspace{0.1cm} % Reduced spacing after sections
+
+\section{Work Experience}
+
+    \begin{twocolentry}{
+        May 2024 – Aug 2024
+    }
+        \textbf{Business Intelligence Analyst}, Spinnaker Analytics, Boston, MA\end{twocolentry}
+
+    \vspace{0.05 cm} % Reduced spacing after entries
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Preprocessed over 1 million online sales records for 1,142 products across 5 years by aggregating data, identifying discontinued products, and filling missing months using linear interpolation techniques to ensure data continuity.
+            \item Developed and implemented advanced time series models including ARIMA, SARIMA, SARIMAX, Double and Triple Exponential Smoothing, and LSTM for predictive modeling of inventory needs, achieving improved accuracy in forecasts.
+            \item Optimized forecasts by reducing prediction error to less than 30\% for 78\% of the products and achieving less than 10\% error for 45\% of the products by fine-tuning and stacking LSTM, ARIMA, and SARIMA models.
+        \end{highlights}
+    \end{onecolentry}
+
+    \vspace{0.1cm} % Reduced spacing after sections
+
+    \begin{twocolentry}{
+        May 2024 – Jan 2025
+    }
+        \textbf{GIS Analyst Intern}, Boston University, Boston, MA\end{twocolentry}
+
+    \vspace{0.05 cm} % Reduced spacing after entries
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Automated geospatial data processing using Python and ArcGIS, improving spatial analysis accuracy by 25\%.
+            \item Implemented predictive analytics (linear regression, ARIMA, SARIMA) for land use forecasting, achieving 92\% R² accuracy.
+            \item Leveraged AWS (S3, Lambda) to automate real-time geospatial updates, reducing manual data retrieval time by 15\%.
+        \end{highlights}
+    \end{onecolentry}
+
+    \vspace{0.1cm} % Reduced spacing after sections
+
+    \begin{twocolentry}{
+        June 2022 – Aug 2022
+    }
+        \textbf{Data Analyst Intern}, Croptix, State College, PA\end{twocolentry}
+
+    \vspace{0.05 cm} % Reduced spacing after entries
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Analyzed 535,000+ rows of agricultural data using SQL, Python (Pandas, NumPy), enhancing yield prediction accuracy by 12\%.
+            \item Designed logistic regression models (85\% accuracy) to predict crop health, improving forecasting capabilities for farm owners.
+            \item Built Power BI dashboards tracking key agronomic KPIs, cutting decision-making time by 20\%.
+        \end{highlights}
+    \end{onecolentry}
+
+    \vspace{0.1cm} % Reduced spacing after sections
+
+    \begin{twocolentry}{
+        June 2022 – Aug 2022
+    }
+        \textbf{Data Analyst Intern}, Intelligent Direct, Boston, MA\end{twocolentry}
+
+    \vspace{0.05 cm} % Reduced spacing after entries
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Developed machine learning models (XGBoost, LSTM) to forecast sales trends, increasing revenue prediction accuracy by 22\%.
+            \item Optimized SQL queries for database restructuring, reducing query execution time by 45\%.
+            \item Created 10+ interactive Tableau dashboards for business intelligence, enabling executives to track KPIs in real-time and make data-driven decisions 30\% faster. Integrated SQL-based data pipelines to automate data updates, ensuring 99\% dashboard accuracy.
+        \end{highlights}
+    \end{onecolentry}
+
+    \vspace{0.1cm} % Reduced spacing after sections
+
+    \begin{twocolentry}{
+        Jan 2024 – May 2024
+    }
+        \textbf{Research Assistant}, Boston University, Boston, MA\end{twocolentry}
+
+    \vspace{0.05 cm} % Reduced spacing after entries
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Led a data-driven research project on predictive modeling, increasing forecasting accuracy by 25\% for 340+ product categories.
+            \item Applied XGBoost and regression analysis to analyze relationships in magnesium production, improving decision-making by 15\%.
+            \item Developed interactive Tableau dashboards that visualized key research findings, cutting data interpretation time by 30\%.
+        \end{highlights}
+    \end{onecolentry}
+
+    \vspace{0.1cm} % Reduced spacing after sections
+
+\section{Projects}
+
+    \begin{twocolentry}{}
+        \textbf{Yelp Business Insights (Big Data, Google Cloud, Apache Spark, SQL, Tableau)}\end{twocolentry}
+
+    \vspace{0.05 cm} % Reduced spacing after entries
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Processed 9GB of raw data using Google Cloud Storage \& Dataproc to identify top-performing businesses. Applied Spark MLlib for clustering and NLP (tokenization, topic modeling) on 7M+ reviews, identifying sentiment trends. Used BigQuery GIS to map geographic trends, providing location-based business intelligence insights.
+        \end{highlights}
+    \end{onecolentry}
+
+    \vspace{0.1cm} % Reduced spacing after sections
+
+    \begin{twocolentry}{}
+        \textbf{Car Crash Analysis in Chicago (Python, GeoPandas, Folium, Scikit-Learn, SQL)}\end{twocolentry}
+
+    \vspace{0.05 cm} % Reduced spacing after entries
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Analyzed 1.2M+ traffic crash records using GeoPandas \& Python, uncovering 200+ accident hotspots. Conducted time-series analysis to identify peak crash times, assisting city planners in improving traffic safety. Developed clustering models to group crash causes, leading to targeted infrastructure improvements.
+        \end{highlights}
+    \end{onecolentry}
+
+    \vspace{0.1cm} % Reduced spacing after sections
+
+    \begin{twocolentry}{}
+        \textbf{Flood Detection System (Machine Learning, Python, Google Earth Engine, GIS)}\end{twocolentry}
+
+    \vspace{0.05 cm} % Reduced spacing after entries
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Processed 18 global flood event datasets from Sentinel-1 \& Sentinel-2 satellites, achieving 94\% accuracy in flood classification. Built GIS-enabled dashboards to assist government agencies in optimizing evacuation plans.
+        \end{highlights}
+    \end{onecolentry}
+
+    \vspace{0.1cm} % Reduced spacing after sections
+
+\section*{Education}
+\begin{itemize}[leftmargin=*, noitemsep]
+    \item \textbf{M.S. in Business Analytics} \\
+    Boston University, Boston, Massachusetts, USA \\
+    Awarded \$18,000 Merit Scholarship
+
+    \item \textbf{B.S. in Data Science} \\
+    Pennsylvania State University, State College, Pennsylvania, USA \\
+    Dean's List for Sophomore Year
+\end{itemize}
+
+\end{document}
